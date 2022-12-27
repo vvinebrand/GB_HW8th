@@ -6,7 +6,7 @@ Boolean begin = true;
 
 while (begin)
 {
-    Console.WriteLine("\nЗадача 1. Сортировка строк массива \nЗадача 2. \nЗадача 3. \nЗадача 4. \nЗадача 5. \nВведите 0 для выхода\n");
+    Console.WriteLine("\nЗадача 1. Сортировка строк массива \nЗадача 2. Поиск строки с наименьшей суммой элементов\nЗадача 3. \nЗадача 4. \nЗадача 5. \nВведите 0 для выхода\n");
     Console.Write("Введите номер задачи: ");
     programm = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine();
@@ -50,7 +50,27 @@ while (begin)
 
         case 2:
 
-            
+            int a = InputNumbers("Введите m: ");
+            int b = InputNumbers("Введите n: ");
+
+            int[,] array_2 = new int[a, b];
+            CreateArray(array_2);
+            WriteArray(array_2);
+
+            int minSumLine = 0;
+            int sumLine = SumLineElements(array_2, 0);
+            for (int i = 1; i < array_2.GetLength(0); i++)
+            {
+                int tempSumLine = SumLineElements(array_2, i);
+                if (sumLine > tempSumLine)
+                {
+                    sumLine = tempSumLine;
+                    minSumLine = i;
+                }
+            }
+
+            Console.WriteLine($"\n{minSumLine + 1} - строкa с наименьшей суммой элементов ({sumLine}) ");
+
             break;
 
         case 3:
@@ -73,6 +93,15 @@ while (begin)
     }
 }
 
+int SumLineElements(int[,] array, int i)
+{
+    int sumLine = array[i, 0];
+    for (int j = 1; j < array.GetLength(1); j++)
+    {
+        sumLine += array[i, j];
+    }
+    return sumLine;
+}
 int InputNumbers(string input)
 {
     Console.Write(input);
