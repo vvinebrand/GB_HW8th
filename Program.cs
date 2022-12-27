@@ -81,13 +81,13 @@ while (begin)
             Console.WriteLine();
 
             int[,] firstMartrix = new int[q, w];
-            CreateArray(firstMartrix);
+            CreateArray_2(firstMartrix);
             Console.WriteLine("Первая матрица: ");
             WriteArray(firstMartrix);
             Console.WriteLine();
 
             int[,] secomdMartrix = new int[w, e];
-            CreateArray(secomdMartrix);
+            CreateArray_2(secomdMartrix);
             Console.WriteLine("Вторая матрица: ");
             WriteArray(secomdMartrix);
             Console.WriteLine();
@@ -153,7 +153,18 @@ void CreateArray(int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = new Random().Next(1,10);
+            array[i, j] = new Random().Next(10,99);
+        }
+    }
+}
+
+void CreateArray_2(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = new Random().Next(1, 10);
         }
     }
 }
