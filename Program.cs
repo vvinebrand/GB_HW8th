@@ -6,7 +6,7 @@ Boolean begin = true;
 
 while (begin)
 {
-    Console.WriteLine("\nЗадача 1. Сортировка строк массива \nЗадача 2. Поиск строки с наименьшей суммой элементов\nЗадача 3. Произведение двух матриц\nЗадача 4. \nЗадача 5. \nВведите 0 для выхода\n");
+    Console.WriteLine("\nЗадача 1. Сортировка строк массива \nЗадача 2. Поиск строки с наименьшей суммой элементов\nЗадача 3. Произведение двух матриц\nВведите 0 для выхода\n");
     Console.Write("Введите номер задачи: ");
     programm = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine();
@@ -99,16 +99,6 @@ while (begin)
             WriteArray(resultMatrix);
 
             break;
-
-        case 4:
-
-            
-            break;
-
-        case 5:
-
-            break;
-
         default:
             begin = false;
             break;
