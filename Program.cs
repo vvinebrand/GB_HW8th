@@ -6,7 +6,7 @@ Boolean begin = true;
 
 while (begin)
 {
-    Console.WriteLine("\nЗадача 1. Сортировка строк массива \nЗадача 2. Поиск строки с наименьшей суммой элементов\nЗадача 3. \nЗадача 4. \nЗадача 5. \nВведите 0 для выхода\n");
+    Console.WriteLine("\nЗадача 1. Сортировка строк массива \nЗадача 2. Поиск строки с наименьшей суммой элементов\nЗадача 3. Произведение двух матриц\nЗадача 4. \nЗадача 5. \nВведите 0 для выхода\n");
     Console.Write("Введите номер задачи: ");
     programm = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine();
@@ -75,7 +75,29 @@ while (begin)
 
         case 3:
 
-            
+            int q = InputNumbers("Введите число строк 1-й матрицы: ");
+            int w = InputNumbers("Введите число столбцов 1-й матрицы/Строк второй: ");
+            int e = InputNumbers("Введите число столбцов 2-й матрицы: ");
+            Console.WriteLine();
+
+            int[,] firstMartrix = new int[q, w];
+            CreateArray(firstMartrix);
+            Console.WriteLine("Первая матрица: ");
+            WriteArray(firstMartrix);
+            Console.WriteLine();
+
+            int[,] secomdMartrix = new int[w, e];
+            CreateArray(secomdMartrix);
+            Console.WriteLine("Вторая матрица: ");
+            WriteArray(secomdMartrix);
+            Console.WriteLine();
+
+            int[,] resultMatrix = new int[q, e];
+
+            MultiplyMatrix(firstMartrix, secomdMartrix, resultMatrix);
+            Console.WriteLine("Произведение первой и второй матриц:");
+            WriteArray(resultMatrix);
+
             break;
 
         case 4:
@@ -90,6 +112,22 @@ while (begin)
         default:
             begin = false;
             break;
+    }
+}
+
+void MultiplyMatrix(int[,] firstMartrix, int[,] secomdMartrix, int[,] resultMatrix)
+{
+    for (int i = 0; i < resultMatrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < resultMatrix.GetLength(1); j++)
+        {
+            int sum = 0;
+            for (int k = 0; k < firstMartrix.GetLength(1); k++)
+            {
+                sum += firstMartrix[i, k] * secomdMartrix[k, j];
+            }
+            resultMatrix[i, j] = sum;
+        }
     }
 }
 
@@ -115,7 +153,7 @@ void CreateArray(int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = new Random().Next(10,99);
+            array[i, j] = new Random().Next(1,10);
         }
     }
 }
